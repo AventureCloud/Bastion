@@ -1,0 +1,22 @@
+#How to use native Windows Clients to connect to Bastion
+
+ "RDP, Connect to a Windows VM"
+
+Syntax
+az network bastion rdp --name "<BastionName>" --resource-group "<ResourceGroupName>" --target-resource-id "<VMResourceId>"
+
+Example: 
+az network bastion rdp --name "vm-demo-vnet-bastion" --resource-group "vm-demo" --target-resource-id "/subscriptions/a260f6ee-4c82-4561-860c-45ad4c97ce24/resourceGroups/vm-demo/providers/Microsoft.Compute/virtualMachines/www2"
+
+- - -
+
+"SSH, Connect to a Linux VM"
+
+Syntax
+az extension add --name ssh
+
+az network bastion ssh --name "<BastionName>" --resource-group "<ResourceGroupName>" --target-resource-id "<VMResourceId>" --auth-type "ssh-key" --username "<Username>" --ssh-key "<Filepath>"
+
+Example:
+az network bastion ssh --name "vm-demo-vnet-bastion" --resource-group "vm-demo" --target-resource-id "/subscriptions/a260f6ee-4c82-4561-860c-45ad4c97ce24/resourceGroups/vm-demo/providers/Microsoft.Compute/virtualMachines/www1" --auth-type "ssh-key" --username "azureuser" --ssh-key "C:\Users\Raghavendra\Downloads\www1_key.pem"
+
